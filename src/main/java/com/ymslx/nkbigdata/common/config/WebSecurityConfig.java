@@ -29,7 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .anyRequest().authenticated()  // 任何请求,登录后可以访问
         .and()
         .formLogin().loginPage(LOGIN_URL)
-        .defaultSuccessUrl("/test", true)
+        .defaultSuccessUrl("/dataMaintance/dataHome", true)
         .failureUrl(LOGIN_URL + "?error").permitAll();
     
     http.headers().frameOptions().disable();

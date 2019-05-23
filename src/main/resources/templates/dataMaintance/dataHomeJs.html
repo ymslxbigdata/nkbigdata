@@ -1,0 +1,80 @@
+<script>
+var app = new Vue({
+	data: function() {
+		return {
+			iframeName: "",
+			tableData: [],
+			openItem: ['1','2','3'],
+
+			editableTabsValue: "0",
+			editableTabs: [],
+			tabIndex: 0,
+			navMenuList: [{mainMenu:'企业生产数据',mainIndex:'1',subMenu:[{title: '园区生产数据',url: 'areaProductData/info',subIndex:'1-1'}
+                                                                        ,{title: '热销产品生产数据',url: 'globalEshopUsersData/info',subIndex:'1-2'}
+                                                                        ,{title: '龙头企业生产数据',url: 'globalEshopTradeData/info',subIndex:'1-3'}]
+                          }
+                         ,{mainMenu:'企业销售订单数据',mainIndex:'2',subMenu:[{title: '园区销售订单数据',url: 'areaOrderData/info',subIndex:'2-1'}
+                                                                     ,{title: '热销产品销售订单数据',url: 'furnitureHotSaleTradeData/info',subIndex:'2-2'}
+                                                                     ,{title: '热销地区销售订单数据',url: 'furnitureAreaSaleTradeData/info',subIndex:'2-3'}
+                                                                     ,{title: '龙头企业销售订单数据',url: 'furnitureHotSaleProductData/info',subIndex:'2-4'}]
+                          }
+                        ,{mainMenu:'其他',mainIndex:'3',subMenu:[{title: '附加信息',url: 'globalEshopOverseasRepo/info',subIndex:'3-1'}]} 
+            ],
+		}
+	},
+	methods: {
+		
+		// 点击菜单后，新增tab页
+		addTab: function(tab) {
+			for (var i = 0; i < this.editableTabs.length; i++) {
+				if (tab.title == this.editableTabs[i].title) {
+					this.editableTabsValue = this.editableTabs[i].name;
+					return;
+				}
+			}
+			var newTabName = ++this.tabIndex + "";
+			this.editableTabs.push({
+				title: tab.title,
+				name: newTabName,
+				url: tab.url,
+			});
+			this.editableTabsValue = newTabName;
+		},
+		
+		removeTab: function(targetName) {
+			var tabs = this.editableTabs;
+			var activeName = this.editableTabsValue;
+			if (activeName === targetName) {
+				tabs.forEach(function(tab, index) {
+					if (tab.name === targetName) {
+						var nextTab = tabs[index + 1] || tabs[index - 1];
+						if (nextTab) {
+							activeName = nextTab.name;
+						}
+					}
+				});
+			}
+			this.editableTabsValue = activeName;
+			this.editableTabs = tabs.filter(function(tab) {
+				return tab.name !== targetName
+			});
+		},
+		
+		
+		bodySize: function() {
+			document.getElementById("contentBodyId").style.height = document.documentElement.clientHeight - 80 + "px";
+			document.getElementById('leftNavId').style.height = document.documentElement.clientHeight - 80 + "px";
+		},
+	},
+	created: function() {
+
+	},
+	mounted: function() {
+		this.bodySize();
+		var self = this;
+		window.onresize = function() {
+			return self.bodySize();
+		} 
+	},
+}).$mount("#app");
+</script>

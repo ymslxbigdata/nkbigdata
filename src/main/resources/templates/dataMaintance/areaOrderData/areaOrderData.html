@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="~{decorator/common-head::common-head}">
+</head>
+<body>
+	<div id="app" style="height: 100%" v-cloak>
+		<vue-form inline>
+  			<vue-form-item label="园区">
+  				<vue-select v-model="areaId" clearable>
+  					<vue-option v-for="(item, index) in areaOptions" :key="index" :label="item.areaNm" :value="item.areaId"></vue-option>
+				</vue-select>
+  			</vue-form-item>
+  			<vue-form-item>
+    			<vue-button type="primary" @click="searchDataHandle()">查询</vue-button>
+  			</vue-form-item>
+		</vue-form>
+		<vue-table :data="areaOrderData" :height="tableHeight" border stripe highlight-current-row>
+  			<vue-table-column prop="areaId" label="园区ID" :visible="showAsideAreaId"></vue-table-column>
+  			<vue-table-column prop="areaNm" label="园区名称" show-overflow-tooltip></vue-table-column>
+  			<vue-table-column prop="orderAmount" label="订单金额（万元）" show-overflow-tooltip></vue-table-column>
+  			<vue-table-column  label="操作" width="110" align="center">
+    			<template slot-scope="scope">
+     				 <vue-button @click="editHandle(scope.row,'edit')" type="primary" size="small" icon="vue-icon-edit"></vue-button>
+    			</template>
+  			</vue-table-column>
+		</vue-table>
+		<vue-aside v-model="showAside" position="right" title="编辑数据" close-on-click-modal>
+  			<vue-form :model="currentData" ref="currentData" label-width="150px">
+  				 <vue-form-item label="园区">
+    				<vue-input v-model="currentData.areaNm" :disabled="disabledAsideAreaNm"></vue-input>
+ 				 </vue-form-item>
+ 				 <vue-form-item label="订单金额（万元）">
+    				<vue-input v-model="currentData.orderAmount" :cleave="{numeral:true,}" :maxlength="12"></vue-input>
+ 				 </vue-form-item>
+  			</vue-form>
+  			<span slot="footer">
+    			<vue-button @click="showAside = false">取消</vue-button>
+    			<vue-button type="primary" @click="editSaveHandle('currentData')">保存</vue-button>
+  			</span>
+		</vue-aside>
+	</div>
+	<script th:include="~{dataMaintance/areaOrderData/areaOrderDataJs::script}"></script>
+</body>
+</html>

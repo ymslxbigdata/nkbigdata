@@ -10,5 +10,6 @@
 		<script th:src="@{/global/vue/vue-all.min.js}"></script>
 		<script th:src="@{/global/vue/vue-component-all.min.js}"></script>
 		<script th:src="@{/resources/js/pjcommon-vue.js}"></script>
+		<script th:inline="javascript">var contextPath = [[${#httpServletRequest.getContextPath()}]];</script>
 	</head>
 </html>
