@@ -2,11 +2,9 @@ package com.ymslx.nkbigdata.entity;
 // Generated 2019-5-23 10:08:53 by Hibernate Tools 5.2.5.Final
 
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -18,29 +16,54 @@ import javax.persistence.Table;
 public class HotSalePlaceOrderData  implements java.io.Serializable {
 
 
-     private HotSalePlaceOrderDataId id;
+	private String placeId;
+    private String placeNm;
+    private Long orderAmount;
 
-    public HotSalePlaceOrderData() {
-    }
+   public HotSalePlaceOrderData() {
+   }
 
-    public HotSalePlaceOrderData(HotSalePlaceOrderDataId id) {
-       this.id = id;
-    }
+	
+   public HotSalePlaceOrderData(String placeId) {
+       this.placeId = placeId;
+   }
+   public HotSalePlaceOrderData(String placeId, String placeNm, Long orderAmount) {
+      this.placeId = placeId;
+      this.placeNm = placeNm;
+      this.orderAmount = orderAmount;
+   }
+  
+    @Id 
+
    
-     @EmbeddedId
+   @Column(name="place_id", unique=true, nullable=false, length=16)
+   public String getPlaceId() {
+       return this.placeId;
+   }
+   
+   public void setPlaceId(String placeId) {
+       this.placeId = placeId;
+   }
 
-    
-    @AttributeOverrides( {
-        @AttributeOverride(name="placeId", column=@Column(name="place_id", nullable=false, length=24) ), 
-        @AttributeOverride(name="placeNm", column=@Column(name="place_nm", nullable=false, length=24) ), 
-        @AttributeOverride(name="orderAmount", column=@Column(name="order_amount", precision=12, scale=0) ) } )
-    public HotSalePlaceOrderDataId getId() {
-        return this.id;
-    }
-    
-    public void setId(HotSalePlaceOrderDataId id) {
-        this.id = id;
-    }
+   
+   @Column(name="place_nm", length=32)
+   public String getPlaceNm() {
+       return this.placeNm;
+   }
+   
+   public void setPlaceNm(String placeNm) {
+       this.placeNm = placeNm;
+   }
+
+   
+   @Column(name="order_amount", precision=12, scale=0)
+   public Long getOrderAmount() {
+       return this.orderAmount;
+   }
+   
+   public void setOrderAmount(Long orderAmount) {
+       this.orderAmount = orderAmount;
+   }
 
 
 
