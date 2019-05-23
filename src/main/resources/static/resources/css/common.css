@@ -1,0 +1,434 @@
+@charset "UTF-8";
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+html,
+body,
+#app {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial,
+        sans-serif !important;
+    overflow: auto;
+}
+
+[v-cloak] {
+    display: none !important;
+}
+
+.width-50 {
+    width: 50%;
+}
+
+.width-100 {
+    width: 100%;
+}
+
+.height-100 {
+    height: 100%
+}
+
+.height-100-10 {
+    height: calc(100% - 10px);
+}
+
+.background-color-0D1633 {
+    background-color: #0D1633
+}
+
+.background-color-324157 {
+    background-color: #324157
+}
+
+.background-color-1A2960 {
+    background-color: #1A2960;
+}
+
+.margin5 {
+    margin: 5px;
+}
+
+.margin-top20 {
+    margin-top: 20px !important;
+}
+
+.margin-left10 {
+    margin-left: 10px !important;
+}
+
+.padding-top-1 {
+    padding-top: 1% !important;
+}
+
+.font-color-red {
+    color: #FF0000;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.flex-3 {
+    flex: 3;
+}
+
+.flex-5 {
+    flex: 5 !important;
+}
+
+.border-1px-solid-black {
+    border: 1px solid black;
+}
+
+/**START************************** VUE - OVERRIDE *************************************START**/
+
+/* 修改data-panel下的vue table 默认样式 */
+.data-panel .vue-table__body-wrapper,
+.data-panel .vue-table__cell,
+.data-panel .vue-table {
+    background-color: #0d1633;
+    color: #ffffff !important;
+    border: 0;
+}
+/* 修改鼠标悬浮时的背景色 */
+.data-panel .vue-table__body .vue-table__row.hover-row>.vue-table__cell {
+    background-color: #1A2960;
+}
+
+.data-panel .vue-table--striped .vue-table__body .vue-table__cell.grey{
+    background-color: #131d44;
+}
+
+.vue-table__column {
+    background-color: #15214e !important;
+    color: #ffffff !important;
+}
+
+.vue-tabs__content {
+    overflow: hidden;
+    position: relative;
+    height: calc(100% - 50px);
+}
+
+.vue-card input {
+    background-color: hsla(0, 0%, 100%, .1);
+    transition: opacity .3s ease;
+    color: #fff;
+}
+
+.vue-card label {
+    color: #fff;
+}
+
+.vue-card a {
+    color: #21AF8F;
+}
+
+.vue-select[customBgColor="blue"] .vue-input__inner {
+    background-color: #0d1633;
+    border-radius: 4px;
+    border: 1px solid #22543f;
+    color: #fbfdff;
+    display: block;
+    height: 36px;
+    line-height: 1;
+    outline: 0;
+    padding: 3px 10px;
+    width: 100%;
+}
+
+.vue-input[customBgColor="blue"] .vue-input__inner {
+    background-color: #0d1633;
+    border-radius: 4px;
+    border: 1px solid #22543f;
+    color: #fbfdff;
+    display: block;
+    height: 36px;
+    line-height: 1;
+    outline: 0;
+    padding: 3px 10px;
+    width: 100%;
+}
+
+.vue-input[customBgColor="blue"] {
+    position: relative;
+    font-size: 14px;
+    width: 100%;
+    display: inline-block;
+}
+
+ .vue-table .vue-table__footer-wrapper .vue-table__column>.cell {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    word-wrap: normal;
+    text-overflow: ellipsis;
+    line-height: 20px;
+    overflow: hidden;
+    color: red;
+}
+
+/**END************************** VUE- OVERRIDE *************************************END**/
+
+/**START***************************LOGIN *************************************START**/
+.login {
+    height: 100%;
+    min-height: 600px;
+}
+
+.logo img {
+    height: 80px;
+    width: 240px;
+    margin-bottom: 10px;
+}
+
+.vue-card {
+    border: 0px;
+    background-color: transparent;
+    color: #fff;
+}
+
+.main-container {
+    position: relative;
+    z-index: 10;
+    font-family: "sans-serif", "Helvetica Neue", Helvetica, "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    font-weight: 300;
+    margin-top: 100px;
+    width: 350px;
+    height: 400px;
+    text-align: center;
+}
+
+.submit-button {
+    font-size: 16px;
+    width: 150px;
+    margin-top: 30px;
+}
+
+.signup-footer {
+    border-top: solid 1px rgba(255, 255, 255, .3);
+    margin: 20px 10px;
+    padding-top: 15px;
+    text-align: center;
+    color: hsla(0, 0%, 100%, .6);
+}
+
+.bg-overlay {
+    background: radial-gradient(circle at top, #104357, rgba(0, 0, 0, 0.67));
+    background-image: -webkit-radial-gradient(top center, #225F77, #232323);
+    opacity: .9;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .main-container {
+        margin-top: 20px
+    }
+}
+
+/**END***************************LOGIN *************************************END**/
+
+/**START*************************HOMEPAGE *************************************END**/
+.menu-bar {
+    height: 80px;
+    background-color: #324157;
+    color: white
+}
+
+.menu-bar .menu-title {
+	margin-left:10px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.vue-menu-item[customFontSize="24"] {
+    height: 56px;
+    line-height: 56px;
+    font-size: 24px;
+    padding: 0 20px;
+    cursor: pointer;
+    position: relative;
+    white-space: nowrap;
+}
+
+.img-content {
+    width: 1340px;
+    height: 528px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-content img {
+    width: 100%;
+    height: auto;
+}
+
+/**END***************************HOMEPAGE *************************************END**/
+
+
+/**START***************************GLOBALTRADE********************************START**/
+.first-class-title {
+    height: 8vh;
+    font-family: '微软雅黑 Bold', '微软雅黑';
+    font-weight: 700;
+    font-style: normal;
+    font-size: 36px;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.second-class-title {
+    height: 36px;
+    font-family: 'Arial Negreta', 'Arial';
+    font-weight: 700;
+    font-style: normal;
+    color: #FFFFFF;
+    line-height: 36px;
+}
+
+.large-div-title {
+    text-align: center;
+    font-family: 'Arial Normal', 'Arial';
+    font-weight: 400;
+    font-size: 50px;
+    color: #FFFFFF;
+}
+
+.filter-text {
+    height: 36px;
+    width: 80px;
+    text-align: right;
+    display: inline-block;
+}
+
+.filter-item {
+    width: 12%;
+    width: 120px;
+    display: inline-block;
+}
+
+.detail-area {
+    height: calc(92% - 41px);
+}
+
+.data-panel-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.data-panel {
+    flex: 1;
+    overflow: hidden !important;
+    margin: 5px;
+    background-color: #1A2960;
+    border: 1px solid;
+    overflow: auto;
+}
+
+.map-panel {
+    height: calc(100% - 10px);
+    margin: 5px;
+    background-color: #1A2960;
+    border: 1px solid;
+}
+
+#map-statistics {
+    background: linear-gradient(#0052e0d1,#ffffff00);
+    position:absolute;
+    left:calc(25% + 6px);
+    top:6px;
+    right: calc(25% + 6px);
+    text-align: center;
+}
+#map-statistics p {
+    display: inline;
+    color: white;
+    line-height: 70px;
+    font-family: 'Arial Negreta', 'Arial';
+    font-weight: 700;
+    font-style: normal;
+}
+#map-statistics span {
+    display: inline;
+    color: #a7fdff;
+    text-align: center;
+    font-size: 40px;
+    font-family: 'Arial Negreta', 'Arial';
+    font-weight: 700;
+    font-style: normal;
+}
+
+.map-frame {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.chart-frame {
+    border: 0;
+    width: 100%;
+    height: calc(100% - 35px);
+}
+
+.table-headers {
+    height: 35px;
+    font-family: 'Arial Negreta', 'Arial';
+    font-weight: 700;
+    font-style: normal;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 36px;
+}
+
+#warehouse-cnt-span-id {
+    line-height: calc(14vh - -3px);
+}
+
+.vue-table[customTableBorder="0"]::before {
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 0px;
+}
+.vue-table[customTableBorder="0"]::after {
+	top: 0;
+	right: 0;
+	width: 0px;
+	height: 100%;
+}
+
+
+/**END***************************GLOBALTRADE********************************END**/
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1d75bd
+}
+
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-track {
+    border-radius: 0;
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0,
+        .2)
+}
+
+::-webkit-scrollbar-track {
+    background: #1441b8
+}
+
+::-webkit-scrollbar-corner {
+    background: #82afff
+}

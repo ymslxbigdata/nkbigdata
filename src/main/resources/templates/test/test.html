@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="~{decorator/common-head::common-head}">
+</head>
+<body>
+	<div id="app">
+		<vue-button type="primary">测试</vue-button>
+		<p>{{contextPath}}<p>
+	</div>
+	
+	<script th:include="~{test/testJS::script}"></script>
+</body>
+</html>

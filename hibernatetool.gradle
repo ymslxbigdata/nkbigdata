@@ -1,0 +1,53 @@
+apply plugin: 'java'
+
+repositories {
+  def nexusNation = "$System.env.ARCHITECTURE_NEXUS_REGION"
+  
+  repositories {
+    mavenCentral()
+    
+  }
+}
+
+dependencies {
+    compile 'org.hibernate:hibernate-tools:5.2.5.Final'
+    compile 'org.postgresql:postgresql:9.4.1212'
+    compile 'ch.qos.logback:logback-classic:0.9.15'
+}
+
+
+task generate {
+    doLast {
+        ant {
+            taskdef(
+                    name: 'hibernatetool',
+                    classname: 'org.hibernate.tool.ant.HibernateToolTask',
+                    classpath: configurations.compile.asPath
+            )
+            hibernatetool(destdir: "src/main/java"){
+                jdbcconfiguration(
+                        configurationfile: "hibernate-tools/hibernate.cfg.xml",
+                        revengfile: "hibernate-tools/hibernate.reveng.xml",
+                        packagename: "com.example.demo.entity",
+                        detectManytoMany: "true",
+                        detectOptimisticLock: "true"
+                )
+                hbm2java(jdk5: true, ejb3: true)
+            }
+        }
+    }
+}
+
+task ddl {
+    doLast {
+        ant {
+            taskdef(name: 'hibernatetool',
+                    classname: 'org.hibernate.tool.ant.HibernateToolTask',
+                    classpath: configurations.compile.asPath + ";build\\classes\\main")
+            hibernatetool(destdir: "build") {
+                annotationconfiguration(configurationfile: "hibernate-tools/hibernate.cfg-ddl.xml")
+                hbm2ddl(export: false, format: true, outputfilename: 'schema.ddl')
+            }
+        }
+    }
+}

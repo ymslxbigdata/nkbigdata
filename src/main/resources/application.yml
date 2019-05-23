@@ -1,0 +1,46 @@
+
+#Server
+server:
+  port: 8080
+  servlet:
+    context-path: /blankapp
+
+#JPA + Hibernate + PostgreSQL
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://10.191.6.52/nkbigdata
+    username: nkbigdata
+    password: ymslx-2019
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+    properties:
+      hibernate:
+        connection:
+          charSet: UTF-8
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        hbm2ddl:
+          auto: update
+        temp:
+          use_jdbc_metadata_defaults: false
+    show-sql: false
+  servlet:
+    #设置接收文件大小
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+#Thymeleaf
+#spring.thymeleaf.prefix: /WEB-INF/views/
+#spring.thymeleaf.suffix: .html
+
+#Devtool    
+spring.devtools.livereload.enabled: false
+spring.devtools.restart.enabled: false
+
+--- # 发布服务器用
+spring.profiles: development
+logging:
+  level:
+    com.example.demo: warn
+        
