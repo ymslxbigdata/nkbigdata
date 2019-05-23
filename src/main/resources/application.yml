@@ -3,7 +3,7 @@
 server:
   port: 8080
   servlet:
-    context-path: /blankapp
+    context-path: /nkbigdata
 
 #JPA + Hibernate + PostgreSQL
 spring:
