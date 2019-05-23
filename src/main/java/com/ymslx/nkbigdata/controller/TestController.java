@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.ymslx.nkbigdata.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

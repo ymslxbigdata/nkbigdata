@@ -1,12 +1,12 @@
-package com.example.demo.service;
+package com.ymslx.nkbigdata.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.entity.UserAuthUserInfo;
-import com.example.demo.repository.UserManageRepository;
+import com.ymslx.nkbigdata.entity.UserAuthUserInfo;
+import com.ymslx.nkbigdata.repository.UserManageRepository;
 
 @Service
 public class UserManageService {

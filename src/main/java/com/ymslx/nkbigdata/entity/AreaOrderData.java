@@ -1,4 +1,4 @@
-package com.example.demo.entity;
+package com.ymslx.nkbigdata.entity;
 // Generated 2019-5-23 10:08:53 by Hibernate Tools 5.2.5.Final
 
 

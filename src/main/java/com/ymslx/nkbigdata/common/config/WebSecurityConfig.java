@@ -1,4 +1,4 @@
-package com.example.demo.common.config;
+package com.ymslx.nkbigdata.common.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

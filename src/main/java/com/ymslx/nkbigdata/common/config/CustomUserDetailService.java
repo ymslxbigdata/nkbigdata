@@ -1,4 +1,4 @@
-package com.example.demo.common.config;
+package com.ymslx.nkbigdata.common.config;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,8 +13,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
-import com.example.demo.entity.UserAuthUserInfo;
-import com.example.demo.service.UserManageService;
+import com.ymslx.nkbigdata.entity.UserAuthUserInfo;
+import com.ymslx.nkbigdata.service.UserManageService;
 
 @Component
 public class CustomUserDetailService implements UserDetailsService{
