@@ -51,7 +51,7 @@ body {
 }
 
 .background-color-10253F {
-    background-color: 10253F
+    background-color: #10253F;
 }
 
 .margin5 {
@@ -102,7 +102,7 @@ body {
 }
 /* 修改鼠标悬浮时的背景色 */
 .data-panel .vue-table__body .vue-table__row.hover-row>.vue-table__cell {
-    background-color: #1A2960;
+    background-color: #10253F;
 }
 
 .data-panel .vue-table--striped .vue-table__body .vue-table__cell.grey{
@@ -240,7 +240,7 @@ body {
 
 /**START*************************HOMEPAGE *************************************END**/
 .menu-bar {
-    height: 50px;
+    height: 5.3%;
     background-color: #324157;
     color: white
 }
@@ -331,7 +331,7 @@ body {
 .data-panel {
     flex: 1;
     overflow: hidden !important;
-    background-color: #1A2960;
+    background-color: #10253F;
     border: 1px solid;
     overflow: auto;
     height:100%;
@@ -340,7 +340,7 @@ body {
 .map-panel {
     height: calc(100% - 10px);
     margin: 5px;
-    background-color: #1A2960;
+    background-color: #10253F;
     border: 1px solid;
 }
 
