@@ -8,7 +8,7 @@
 	<div id="app" style="height: 100%" v-cloak>
 		<vue-form inline>
   			<vue-form-item label="产品ID">
-    			<vue-input v-model="productId" :maxlength="24" @change="changeCondition"></vue-input>
+    			<vue-input v-model="productId" :maxlength="16" @change="changeCondition"></vue-input>
   			</vue-form-item>
   			<vue-form-item label="产品名称">
     			<vue-input v-model="productNm" :maxlength="32" @change="changeCondition"></vue-input>
@@ -20,8 +20,8 @@
 		<vue-table :data="hotSaleProductData" :height="tableHeight" border stripe show-foot>
 			<vue-table-column prop="productId" label="产品ID"  show-overflow-tooltip></vue-table-column> 
 			<vue-table-column prop="productNm" label="产品名称"  show-overflow-tooltip></vue-table-column>
-			<vue-table-column prop="monthProduction" label="月产量"  show-overflow-tooltip></vue-table-column>
-			<vue-table-column prop="yearProduction" label="年产量"  show-overflow-tooltip></vue-table-column>
+			<vue-table-column prop="monthProduction" label="月产量（万套）"  show-overflow-tooltip></vue-table-column>
+			<vue-table-column prop="yearProduction" label="年产量（万套）"  show-overflow-tooltip></vue-table-column>
 			<vue-table-column label="操作" fixed="right" align="center" width="110">
 				<template slot-scope="scope">
 					<vue-button @click="editInsertHandle(scope.row,'edit')" type="primary" size="small" icon="vue-icon-edit"></vue-button>
@@ -37,16 +37,16 @@
 		<vue-aside v-model="showAside" title="编辑数据" close-on-click-modal>
 			<vue-form :model="currentData" ref="currentDataForm" :rules="currentDataRules" label-width="130px" style="padding: 15px">
 				<vue-form-item prop="productId" label="产品ID" v-show="showAsideProductId">
-					<vue-input v-model="currentData.productId" :maxlength="24"></vue-input>
+					<vue-input v-model="currentData.productId" :maxlength="16"></vue-input>
 				</vue-form-item>
 				<vue-form-item prop="productNm" label="产品名称" >
 					<vue-input v-model="currentData.productNm" :maxlength="32" :disabled="disabledAsideProductNm"></vue-input>
 				</vue-form-item>
 				</vue-form-item>
-				<vue-form-item prop="monthProduction" label="月产量">
+				<vue-form-item prop="monthProduction" label="月产量（万套）">
 					<vue-input v-model="currentData.monthProduction" :cleave="{numeral:true,}" :maxlength="12"></vue-input>
 				</vue-form-item>
-				<vue-form-item prop="yearProduction" label="年产量">
+				<vue-form-item prop="yearProduction" label="年产量（万套）">
 					<vue-input v-model="currentData.yearProduction" :cleave="{numeral:true,}" :maxlength="12"></vue-input>
 				</vue-form-item>
 			</vue-form>
