@@ -7,7 +7,7 @@
 
 html,
 body,
-#app {
+#app,#home {
     width: 100%;
     height: 100%;
 }
@@ -48,6 +48,10 @@ body {
 
 .background-color-1A2960 {
     background-color: #1A2960;
+}
+
+.background-color-10253F {
+    background-color: 10253F
 }
 
 .margin5 {
@@ -236,7 +240,7 @@ body {
 
 /**START*************************HOMEPAGE *************************************END**/
 .menu-bar {
-    height: 80px;
+    height: 50px;
     background-color: #324157;
     color: white
 }
@@ -327,10 +331,10 @@ body {
 .data-panel {
     flex: 1;
     overflow: hidden !important;
-    margin: 5px;
     background-color: #1A2960;
     border: 1px solid;
     overflow: auto;
+    height:100%;
 }
 
 .map-panel {
@@ -376,7 +380,8 @@ body {
 .chart-frame {
     border: 0;
     width: 100%;
-    height: calc(100% - 35px);
+/*     height: calc(100% - 35px); */
+	height: 100% ;
 }
 
 .table-headers {
@@ -406,7 +411,50 @@ body {
 	height: 100%;
 }
 
+.float-left {
+    float: left!important
+}
 
+.margin-right5 {
+    margin-right: 5px!important
+}
+
+.padding10-20 {
+    padding: 10px 20px!important
+}
+
+.cursor-pointer {
+    cursor: pointer!important
+}
+
+.head-summary {
+	width: 220px
+}
+
+.font-color-white {
+    color: #fff!important
+}
+
+.text-align-center {
+    text-align: center
+}
+
+.font-weight-bold {
+    font-weight: 700!important
+}
+
+.font-size-larger{
+	font-size: larger!important
+}
+
+
+.circle {
+    width: 200px;
+    height: 170px;
+    border-radius: 20em;
+    background: #E83338;
+    text-align:center";
+}
 /**END***************************GLOBALTRADE********************************END**/
 
 ::-webkit-scrollbar {

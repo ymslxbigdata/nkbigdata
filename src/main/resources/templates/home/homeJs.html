@@ -2,16 +2,59 @@
 <script>
 var getVueInstance = function(){return homeApp}
 var homeApp = new Vue({
-	mixins: [ajaxGetButtonMixin()],
+// 	mixins: [ajaxGetButtonMixin()],
 	data: function() {
 		return {
 
 			iframeName: "homePage",
 			iframeUrl: "homePage/info",
-
+			curDate: getDateYYYYMMDDStringCH(new Date()),
+			curTime: getDateHHmmSSStringCH(new Date()),
+			areaMonthOutputUrl: 'dashboard/areaMonthOutput',
+			areaSalesOrderAnalysisUrl: 'dashboard/areaSalesOrderAnalysis',
+			leadingMonthAnalysisUrl: 'dashboard/leadingMonthAnalysis',
+			hotSaleMonthUrl: 'dashboard/hotSaleMonth',
+			hotSaleYearUrl: 'dashboard/hotSaleYear',
+			hotSaleAreaAmoutUrl: 'dashboard/hotSaleAreaAmout',
+			hotSaleProductAmoutUrl: 'dashboard/hotSaleProductAmout',
 		}
 	},
+	methods: {
+		
+		// 获取跨境电商平台交易额
+        getXBorderTotalSales: function(date){
 
+            let self = this;
+
+            self.$http.post(contextPath + '/dashboard/globalTrade/getXBorderTotalSales' , date)
+                .then(function(response) {
+
+                    let result = response.data[0];
+                    let chartFrame = document.getElementById('xBorderTotalSales').contentWindow;
+                    chartFrame.onload = function() {
+                    	self.isAreaEshopTradeLoadFinish = true;
+                    	chartFrame.chart.setOption({series: [{data: result}]});
+                    	chartFrame.autoTip(7);
+                    };
+                    if(self.isAreaEshopTradeLoadFinish) {
+                    	chartFrame.chart.setOption({series: [{data: result}]});
+                    }
+                    
+                }, function(response) {
+                    errorMsg(response.body.reason);
+                });
+        },
+	}
+	created: function() {
+		//实时更新时间
+		var self = this;
+		setInterval(function() {
+			self.curDate = getDateYYYYMMDDStringCH(new Date());
+		}, 360000);
+		setInterval(function() {
+			self.curTime = getDateHHmmSSStringCH(new Date());
+		}, 1000);
+	}
 }).$mount("#home");
 
 window.onload = function() {
