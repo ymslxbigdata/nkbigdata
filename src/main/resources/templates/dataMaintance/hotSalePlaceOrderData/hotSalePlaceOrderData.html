@@ -8,7 +8,7 @@
 	<div id="app" style="height: 100%" v-cloak>
 		<vue-form inline>
   			<vue-form-item label="地区ID">
-    			<vue-input v-model="placeId" :maxlength="24" @change="changeCondition"></vue-input>
+    			<vue-input v-model="placeId" :maxlength="16" @change="changeCondition"></vue-input>
   			</vue-form-item>
   			<vue-form-item label="地区名称">
     			<vue-input v-model="placeNm" :maxlength="32" @change="changeCondition"></vue-input>
@@ -20,7 +20,7 @@
 		<vue-table :data="hotSalePlaceOrderData" :height="tableHeight" border stripe show-foot>
 			<vue-table-column prop="placeId" label="地区ID"  show-overflow-tooltip></vue-table-column> 
 			<vue-table-column prop="placeNm" label="地区名称"  show-overflow-tooltip></vue-table-column>
-			<vue-table-column prop="orderAmount" label="订单金额"  show-overflow-tooltip></vue-table-column>
+			<vue-table-column prop="orderAmount" label="订单金额（万元）"  show-overflow-tooltip></vue-table-column>
 			<vue-table-column label="操作" fixed="right" align="center" width="110">
 				<template slot-scope="scope">
 					<vue-button @click="editInsertHandle(scope.row,'edit')" type="primary" size="small" icon="vue-icon-edit"></vue-button>
@@ -36,13 +36,13 @@
 		<vue-aside v-model="showAside" title="编辑数据" close-on-click-modal>
 			<vue-form :model="currentData" ref="currentDataForm" :rules="currentDataRules" label-width="130px" style="padding: 15px">
 				<vue-form-item prop="placeId" label="地区ID" v-show="showAsidePlaceId">
-					<vue-input v-model="currentData.placeId" :maxlength="24"></vue-input>
+					<vue-input v-model="currentData.placeId" :maxlength="16"></vue-input>
 				</vue-form-item>
 				<vue-form-item prop="placeNm" label="地区名称" >
 					<vue-input v-model="currentData.placeNm" :maxlength="32" :disabled="disabledAsidePlaceNm"></vue-input>
 				</vue-form-item>
 				</vue-form-item>
-				<vue-form-item prop="orderAmount" label="订单金额">
+				<vue-form-item prop="orderAmount" label="订单金额（万元）">
 					<vue-input v-model="currentData.orderAmount" :cleave="{numeral:true,}" :maxlength="12"></vue-input>
 				</vue-form-item>
 			</vue-form>

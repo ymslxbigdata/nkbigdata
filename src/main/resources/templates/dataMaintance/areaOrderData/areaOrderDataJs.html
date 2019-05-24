@@ -1,4 +1,4 @@
-<script th:inline="javascript">
+<script>
 var app = new Vue({
 	
     data: function() {
@@ -43,7 +43,7 @@ var app = new Vue({
     		
     		if(handleType == 'edit') {
     			this.currentData = VueUtil.merge({}, rowData);
-    			this.currentIndex = this.areaProductData.indexOf(rowData);
+    			this.currentIndex = this.areaOrderData.indexOf(rowData);
     		}
         },
     	

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<script type="text/javascript">
+<script>
 var app = new Vue({
 	data: function() {
 		return {
@@ -61,6 +60,7 @@ var app = new Vue({
     		else {
     			
     			this.currentData = {};
+    			this.$refs.currentDataForm.resetFields();
     			this.showAsideCompId = true;
         		this.disabledAsideCompNm = false;
     		}
