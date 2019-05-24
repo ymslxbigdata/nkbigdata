@@ -28,4 +28,8 @@ public class LeadingCompOrderDataService {
 		
 		leadingCompOrderDataRepository.delete(leadingCompOrderData);
 	}
+	
+	public List<Object[]> getLeadingMonthAnalysis() {
+		return leadingCompOrderDataRepository.getLeadingMonthAnalysis();
+	}
 }

@@ -32,6 +32,18 @@ public class HotSaleProductDataService {
 		hotSaleProductDataRepository.delete(hotSaleProductData);
 	}
 	
+	public Map<String,Long> getHotSaleMonth( ) {
+		
+		List<HotSaleProductData> productList = hotSaleProductDataRepository.findAll();
+		Map<String,Long> map=new HashMap<>();
+		
+		for (HotSaleProductData hotSaleProductData : productList) {
+			 map.put(hotSaleProductData.getProductNm(),hotSaleProductData.getYearProduction());		
+		}
+		
+		return map;
+	}
+	
 	public Map<String,Long> getHotSaleYear( ) {
 		
 		List<HotSaleProductData> productList = hotSaleProductDataRepository.findAll();

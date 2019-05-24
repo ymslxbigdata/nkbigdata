@@ -10,6 +10,12 @@ var homeApp = new Vue({
 			iframeUrl: "homePage/info",
 			curDate: getDateYYYYMMDDStringCH(new Date()),
 			curTime: getDateHHmmSSStringCH(new Date()),
+			areaCnt: 0,
+			compCnt: 0,
+			currentOrderAmount: 0,
+			orderIncrease: 0,
+			yearProduction: 0,
+			yearOutput: 0,
 			areaMonthOutputUrl: 'dashboard/areaMonthOutput',
 			areaSalesOrderAnalysisUrl: 'dashboard/areaSalesOrderAnalysis',
 			leadingMonthAnalysisUrl: 'dashboard/leadingMonthAnalysis',
@@ -21,8 +27,22 @@ var homeApp = new Vue({
 	},
 	methods: {
 		
+		getAddtionalInfo: function(){
+            var self = this;
+            self.$http.post(contextPath + '/dashboard/getAddtionalInfo' , {}).then(function(response) {
+            	var result = response.data;
+            	self.areaCnt = result.areaCnt;
+            	self.compCnt = result.compCnt;
+            	self.currentOrderAmount = (result.currentOrderAmount.toFixed(2) + '').replace(/\d{1,3}(?=(\d{3})+(\.\d*)?$)/g, '$&,');
+            	self.yearProduction = result.yearProduction;
+            	self.yearOutput = result.yearOutput;
+            	self.orderIncrease = result.orderIncrease;
+                }, function(response) {
+                    errorMsg(response.body.reason);
+			});
+		},
+	
         getAreaMonthOutput: function(){
-
             var self = this;
             self.$http.post(contextPath + '/dashboard/getAreaMonthOutput' , {}).then(function(response) {
 					var data1= [];
@@ -30,7 +50,6 @@ var homeApp = new Vue({
 					var data3= [];
                     let result = response.data;
 				      for(var i in result){
-				    	  debugger
 		                    data1.push(result[i].areaNm);
 		                    data2.push(result[i].monthProduct);
 		                    data3.push(result[i].monthOutput);
@@ -38,6 +57,45 @@ var homeApp = new Vue({
                     let chartFrame = document.getElementById('areaMonthOutput').contentWindow;
                     chartFrame.onload = function() {
                     	chartFrame.chart.setOption({yAxis: {data: data1},series: [{data: data2},{data: data3}]});
+                    };
+                }, function(response) {
+                    errorMsg(response.body.reason);
+                });
+        },
+        
+        getAreaSalesOrderAnalysis: function(){
+            var self = this;
+            self.$http.post(contextPath + '/dashboard/getAreaSalesOrderAnalysis' , {}).then(function(response) {
+					var data1= [];
+					var data2= [];
+					var data3= [];
+                    let result = response.data;
+				      for(var i in result){
+		                    data1.push(i);
+		                    data2.push(result[i]);
+		                }
+                    let chartFrame = document.getElementById('areaSalesOrderAnalysis').contentWindow;
+                    chartFrame.onload = function() {
+                    	chartFrame.chart.setOption({yAxis: {data: data1},series: [{data: data2}]});
+                    };
+                }, function(response) {
+                    errorMsg(response.body.reason);
+            });
+        },
+        
+        getHotSaleMonth: function(){
+            var self = this;
+            self.$http.post(contextPath + '/dashboard/getHotSaleMonth' , {}).then(function(response) {
+					var data1= [];
+					var data2= [];
+                    let result = response.data;
+				      for(var i in result){
+		                    data1.push(i);
+		                    data2.push({value:result[i],name:i});
+		                }
+                    let chartFrame = document.getElementById('hotSaleMonth').contentWindow;
+                    chartFrame.onload = function() {
+                    	chartFrame.chart.setOption({legend: {data: data1},series: [{data: data2}]});
                     };
                 }, function(response) {
                     errorMsg(response.body.reason);
@@ -58,6 +116,28 @@ var homeApp = new Vue({
                     let chartFrame = document.getElementById('hotSaleYear').contentWindow;
                     chartFrame.onload = function() {
                     	chartFrame.chart.setOption({xAxis: {data: data1},series: [{data: data2}]});
+                    };
+                }, function(response) {
+                    errorMsg(response.body.reason);
+                });
+        },
+        
+        getLeadingMonthAnalysis: function(){
+
+            var self = this;
+            self.$http.post(contextPath + '/dashboard/getLeadingMonthAnalysis' , {}).then(function(response) {
+					var data1= [];
+					var data2= [];
+					var data3= [];
+                    let result = response.data;
+				      for(var i in result){
+		                    data1.push(result[i][0]);
+		                    data2.push(result[i][1]);
+		                    data3.push(result[i][2]);
+		                }
+                    let chartFrame = document.getElementById('leadingMonthAnalysis').contentWindow;
+                    chartFrame.onload = function() {
+                    	chartFrame.chart.setOption({xAxis: {data: data1},series: [{data: data2},{data: data3}]});
                     };
                 }, function(response) {
                     errorMsg(response.body.reason);
@@ -116,8 +196,12 @@ var homeApp = new Vue({
 	},
     mounted: function() {
     	var self = this;
+    	self.getAddtionalInfo();
     	self.getAreaMonthOutput();
+    	self.getAreaSalesOrderAnalysis();
+    	self.getHotSaleMonth();
     	self.getHotSaleYear();
+    	self.getLeadingMonthAnalysis();
     	self.getHotSaleAreaAmout();
     	self.getHotSaleProductAmout();
     },

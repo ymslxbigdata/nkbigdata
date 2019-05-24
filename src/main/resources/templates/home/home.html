@@ -34,7 +34,7 @@
 							<vue-row type="flex" align="middle">
 								<vue-col :span="24" class="font-color-white text-align-center font-weight-bold">
 									<span>园区个数</span></br>
-									<span class="font-size-larger">13</span>
+									<span class="font-size-larger">{{areaCnt}}</span>
 								</vue-col>
 							</vue-row>
 						</div>
@@ -44,7 +44,7 @@
 								<vue-col :span="24" class="font-color-white text-align-center font-weight-bold">
 									<!-- <span class="font-size24">{{deviceNumber}}</span></br> -->
 									<span>企业总数</span></br>
-									<span class="font-size-larger">1022</span>
+									<span class="font-size-larger">{{compCnt}}</span>
 									
 								</vue-col>
 							</vue-row>
@@ -53,15 +53,19 @@
 					<vue-row class="font-size-larger font-color-white" style="margin:20px">
 						<span >截至当前销售订单总金额：</span></br>
 						<span>(元)</span></br>
-						<div style="color:red;text-align:center;font-size: xx-large;">5,070,0000</div>
-						<div style="text-align:right;font-size: x-large;margin-right: 50px;margin-top: 20px;">同比增长58%</div>
+						<div style="color:red;text-align:center;font-size: xx-large;">{{currentOrderAmount}}</div>
+						<div style="text-align:right;font-size: x-large;margin-right: 50px;margin-top: 20px;">同比增长{{orderIncrease}}%</div>
 					</vue-row>
-					<vue-row type="flex" justify="center">
-						<vue-col :span="6"></vue-col>
-						<vue-col :span="12">
-							<div style="width:100%;height:100%;text-align:center;"> hello</div>
-						</vue-col>
-						<vue-col :span="6"></vue-col>
+					<vue-row>
+						<div style="background-color:yellow;height:1px;"></div>
+					</vue-row>
+					<vue-row class="font-size-larger font-color-white" style="margin:20px">
+						<span >年产总量：</span></br>
+						<div style="color:yellow;text-align:center;font-size: xx-large;">{{yearProduction}}&nbsp;(万套)</div>
+					</vue-row>
+					<vue-row class="font-size-larger font-color-white" style="margin:20px">
+						<span >年产总值：</span></br>
+						<div style="color:yellow;text-align:center;font-size: xx-large;">{{yearOutput}}&nbsp;(万元)</div>
 					</vue-row>
 				</div>
 			</vue-col>
