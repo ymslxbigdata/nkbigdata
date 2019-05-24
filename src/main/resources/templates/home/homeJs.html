@@ -21,30 +21,89 @@ var homeApp = new Vue({
 	},
 	methods: {
 		
-		// 获取跨境电商平台交易额
-        getXBorderTotalSales: function(date){
+        getAreaMonthOutput: function(){
 
-            let self = this;
-
-            self.$http.post(contextPath + '/dashboard/globalTrade/getXBorderTotalSales' , date)
-                .then(function(response) {
-
-                    let result = response.data[0];
-                    let chartFrame = document.getElementById('xBorderTotalSales').contentWindow;
+            var self = this;
+            self.$http.post(contextPath + '/dashboard/getAreaMonthOutput' , {}).then(function(response) {
+					var data1= [];
+					var data2= [];
+					var data3= [];
+                    let result = response.data;
+				      for(var i in result){
+				    	  debugger
+		                    data1.push(result[i].areaNm);
+		                    data2.push(result[i].monthProduct);
+		                    data3.push(result[i].monthOutput);
+		                }
+                    let chartFrame = document.getElementById('areaMonthOutput').contentWindow;
                     chartFrame.onload = function() {
-                    	self.isAreaEshopTradeLoadFinish = true;
-                    	chartFrame.chart.setOption({series: [{data: result}]});
-                    	chartFrame.autoTip(7);
+                    	chartFrame.chart.setOption({yAxis: {data: data1},series: [{data: data2},{data: data3}]});
                     };
-                    if(self.isAreaEshopTradeLoadFinish) {
-                    	chartFrame.chart.setOption({series: [{data: result}]});
-                    }
-                    
                 }, function(response) {
                     errorMsg(response.body.reason);
                 });
         },
-	}
+        
+        getHotSaleYear: function(){
+
+            var self = this;
+            self.$http.post(contextPath + '/dashboard/getHotSaleYear' , {}).then(function(response) {
+					var data1= [];
+					var data2= [];
+                    let result = response.data;
+				      for(var i in result){
+		                    data1.push(i);
+		                    data2.push(result[i]);
+		                }
+                    let chartFrame = document.getElementById('hotSaleYear').contentWindow;
+                    chartFrame.onload = function() {
+                    	chartFrame.chart.setOption({xAxis: {data: data1},series: [{data: data2}]});
+                    };
+                }, function(response) {
+                    errorMsg(response.body.reason);
+                });
+        },
+        
+        getHotSaleAreaAmout: function(){
+
+            var self = this;
+            self.$http.post(contextPath + '/dashboard/getHotSaleAreaAmout' , {}).then(function(response) {
+					var data1= [];
+					var data2= [];
+                    let result = response.data;
+				      for(var i in result){
+		                    data1.push(i);
+		                    data2.push(result[i]);
+		                }
+                    let chartFrame = document.getElementById('hotSaleAreaAmout').contentWindow;
+                    chartFrame.onload = function() {
+                    	chartFrame.chart.setOption({xAxis: {data: data1},series: [{data: data2}]});
+                    };
+                }, function(response) {
+                    errorMsg(response.body.reason);
+                });
+        },
+        
+        getHotSaleProductAmout: function(){
+
+            var self = this;
+            self.$http.post(contextPath + '/dashboard/getHotSaleProductAmout' , {}).then(function(response) {
+					var data1= [];
+					var data2= [];
+                    let result = response.data;
+				      for(var i in result){
+		                    data1.push(i);
+		                    data2.push(result[i]);
+		                }
+                    let chartFrame = document.getElementById('hotSaleProductAmout').contentWindow;
+                    chartFrame.onload = function() {
+                    	chartFrame.chart.setOption({xAxis: {data: data1},series: [{data: data2}]});
+                    };
+                }, function(response) {
+                    errorMsg(response.body.reason);
+                });
+        },
+	},
 	created: function() {
 		//实时更新时间
 		var self = this;
@@ -54,7 +113,14 @@ var homeApp = new Vue({
 		setInterval(function() {
 			self.curTime = getDateHHmmSSStringCH(new Date());
 		}, 1000);
-	}
+	},
+    mounted: function() {
+    	var self = this;
+    	self.getAreaMonthOutput();
+    	self.getHotSaleYear();
+    	self.getHotSaleAreaAmout();
+    	self.getHotSaleProductAmout();
+    },
 }).$mount("#home");
 
 window.onload = function() {

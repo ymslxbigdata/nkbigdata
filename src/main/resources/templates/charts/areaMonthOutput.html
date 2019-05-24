@@ -10,8 +10,8 @@
     <div id="chart" style="width: 460px;height:425px;" class="background-color-0D1633"></div>
     <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('chart'));
-        myChart.showLoading();
+        var chart = echarts.init(document.getElementById('chart'));
+        chart.showLoading();
         var colors = ['#1193f3', '#d14a61'];
 
         // 指定图表的配置项和数据
@@ -105,9 +105,9 @@
             ]
         };
 
-        myChart.hideLoading();
+        chart.hideLoading();
         // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
+        chart.setOption(option);
     </script>
 </body>
 </html>

@@ -23,4 +23,8 @@ public class AreaProductDataService {
 		
 		areaProductDataRepository.save(areaProductData);
 	}
+	
+	public List<AreaProductData> getAreaMonthOutput() {
+		return areaProductDataRepository.findAll();
+	}
 }
