@@ -39,11 +39,11 @@
                 }
             },
             legend: {
-            	 data:['产品订单销量(万元)', '月产能(产品套数)'],
+            	 data:['产品订单销量(万元)', '月产能(万元)'],
                  textStyle: {
                      color: 'rgba(255, 255, 255, 0.8)'
                  },
-                 right: 0,
+                 center: 0,
             },
             xAxis: [
             	{
@@ -70,7 +70,7 @@
 		        },
 		        {
 		            type: 'value',
-		            name: '月产能(产品套数)',
+		            name: '月产能(万元)',
 		            position: 'right',
 		            offset: 10,
 		            nameLocation: 'end',
@@ -109,7 +109,7 @@
 	                },
             	},
             	{
-            		name: '月产能(产品套数)',
+            		name: '月产能(万元)',
 	                type: 'bar',
 	                yAxisIndex: 1,
 	                data: [150,140,130,120,110,102,100,90,89,80,78,75,75,74,73,70,69,68,67,66],

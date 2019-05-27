@@ -89,7 +89,9 @@ body {
 .border-1px-solid-black {
     border: 1px solid black;
 }
-
+.font-size24 {
+	font-size:24px;
+}
 /**START************************** VUE - OVERRIDE *************************************START**/
 
 /* 修改data-panel下的vue table 默认样式 */
