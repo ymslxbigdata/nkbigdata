@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE jboss-web>
 <jboss-web>
-  <context-root>/nkbigdata</context-root>
+  <context-root>/iot</context-root>
 </jboss-web>

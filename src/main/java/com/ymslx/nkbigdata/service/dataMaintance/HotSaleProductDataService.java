@@ -38,7 +38,7 @@ public class HotSaleProductDataService {
 		Map<String,Long> map=new HashMap<>();
 		
 		for (HotSaleProductData hotSaleProductData : productList) {
-			 map.put(hotSaleProductData.getProductNm(),hotSaleProductData.getYearProduction());		
+			 map.put(hotSaleProductData.getProductNm(),hotSaleProductData.getMonthProduction());		
 		}
 		
 		return map;
